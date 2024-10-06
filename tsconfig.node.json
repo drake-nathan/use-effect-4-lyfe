@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowImportingTsExtensions": true,
+    "allowJs": true,
     "isolatedModules": true,
     "lib": ["ES2023"],
     "module": "ESNext",
@@ -13,10 +14,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "skipLibCheck": true,
-
     /* Linting */
     "strict": true,
     "target": "ES2022"
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts", "eslint.config.js", "prettier.config.js"]
 }

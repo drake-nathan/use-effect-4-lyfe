@@ -1,19 +1,24 @@
 import js from "@eslint/js";
-import globals from "globals";
-import reactHooks from "eslint-plugin-react-hooks";
-import reactRefresh from "eslint-plugin-react-refresh";
-import tseslint from "typescript-eslint";
 import perfectionist from "eslint-plugin-perfectionist";
 import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   { ignores: ["dist"] },
   {
     extends: [
       js.configs.recommended,
+      perfectionist.configs["recommended-natural"],
+    ],
+    files: ["**/*.{ts,tsx,js}"],
+  },
+  {
+    extends: [
       ...tseslint.configs.strictTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
-      perfectionist.configs["recommended-natural"],
     ],
     files: ["**/*.{ts,tsx}"],
     languageOptions: {
@@ -24,7 +29,6 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
-    settings: { react: { version: "18.3" } },
     plugins: {
       react,
       "react-hooks": reactHooks,
@@ -39,5 +43,6 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
     },
+    settings: { react: { version: "18.3" } },
   },
 );
